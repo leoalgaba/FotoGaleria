@@ -7,15 +7,15 @@ const exphbs = require('express-handlebars')
 app = express()
 
 // Configuracion
-app.set('port', 3000)
 app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', '.hbs')
+const Views = app.get('views')
 app.engine('.hbs', exphbs({
     defaultLayout:'main',
-    layoutsDir: path.join(app.get('views'), 'layouts'),
-    partialsDir:path.join(app.get('views'), 'partial'),
+    layoutsDir: path.join(Views, 'layouts'),
+    partialsDir:path.join(Views, 'partial'),
     extname: 'hbs'
 }))
-app.set('view engine', '.hbs')
 
 // MIDDLEWARES
 app.use(morgan('dev'))

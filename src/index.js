@@ -1,5 +1,8 @@
 const app = require('./app')
 
-app.listen(app.get('port'), () =>{
-    console.log('Servidor corriendo en', app.get('port'))
+app.set('port', 3000)
+const Port = app.set('port')
+
+app.listen(Port, () =>{
+    console.log('Servidor corriendo en',Port )
 })
