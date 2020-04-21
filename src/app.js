@@ -1,7 +1,7 @@
 const express = require('express')
 const morgan = require('morgan')
 const multer = require('multer')
-const path = require('path')
+const path = require('path') //enlazar rutas
 const exphbs = require('express-handlebars')
 
 app = express()
@@ -19,8 +19,8 @@ app.engine('.hbs', exphbs({
 
 // MIDDLEWARES
 app.use(morgan('dev'))
-app.use(express.json())
-app.use(express.urlencoded({extended: false}))
+app.use(express.json()) //Para manejar ficheros json
+app.use(express.urlencoded({extended: false})) //indispensable para manejar formularios
 const storage = multer.diskStorage({
     destination: path.join(__dirname,'public/uploads'),
     filename:(req,file,cb) =>{
