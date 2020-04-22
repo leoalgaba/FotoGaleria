@@ -8,4 +8,5 @@ const Port = app.set('port')
 
 app.listen(Port, () =>{
     console.log('Servidor corriendo en',Port )
+    console.log('Environment', process.env.NODE_ENV)
 })
