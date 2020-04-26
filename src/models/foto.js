@@ -1,6 +1,6 @@
-const {schema, model} = require('mongoose')
+const {Schema, model} = require('mongoose')
 
-const foto = new schema({
+const foto = new Schema({
     titulo: String,
     descripcion: String,
     imagenURL: String,
