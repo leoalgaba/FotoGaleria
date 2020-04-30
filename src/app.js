@@ -5,6 +5,7 @@ const path = require('path') //enlazar rutas
 const exphbs = require('express-handlebars')
 
 app = express()
+require('./database');
 
 // Configuracion
 app.set('views', path.join(__dirname, 'views'))

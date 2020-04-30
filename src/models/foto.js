@@ -1,9 +1,9 @@
 const {Schema, model} = require('mongoose')
 
 const foto = new Schema({
-    titulo: String,
-    descripcion: String,
-    imagenURL: String,
+    title: String,
+    description: String,
+    imageURL: String,
     public_id: String
 })
 

@@ -12,27 +12,34 @@ cloudinary.config({
 
 const fs = require('fs-extra')
 
-router.get('/', (req, res,) =>{
-    res.render('images')
+router.get('/', async (req, res,) =>{
+    const fotos = await foto.find()
+    res.render('images', {fotos})
 })
-router.get('/images/add', (req, res) =>{
-    res.render('image_form')
+router.get('/images/add', async (req, res) =>{
+    const fotos = await foto.find()
+    res.render('image_form', {fotos})
 })
 router.post('/images/add', async (req, res) =>{
     const {title, description} = req.body
     console.log(req.file) // informacion de la imagen
     const result = await cloudinary.v2.uploader.upload(req.file.path)
-    console.log(result)
     const newfoto = new foto({
         title,
         description,
-        imagenURL: result.url,
+        imageURL: result.url,
         public_id: result.public_id
     })
     await newfoto.save()
     await fs.unlink(req.file.path)
     
-    res.send('Recibido')
+    res.redirect('/')
+})
+router.get('/images/delete/:foto_id', async (req, res) =>{
+    const {foto_id} = req.params
+    const Foto = await foto.findByIdAndDelete(foto_id)
+    const result = await cloudinary.v2.uploader.destroy(Foto.public_id)
+    res.redirect('/images/add')
 })
 
 module.exports = router
