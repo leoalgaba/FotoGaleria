@@ -5,33 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galeria de fotos</title>
     <link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/flexslider.min.css" type="text/css" media="screen" />
+  <style>
+    .box {
+      width: 450px;
+      height: 150px;
+      
+    }
+    .borde {
+      border:double 5px #000000;
+      -moz-border-radius: 31px;
+      -webkit-border-radius: 31px;
+      border-radius: 31px;
+    }
+    
+    .flexslider {
+      margin-bottom: 10px;
+      
+    }
+
+    .flex-control-nav {
+      position: relative;
+      bottom: auto;
+    }
+
+    .custom-navigation {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+    }
+
+    .custom-navigation > * {
+      display: table-cell;
+    }
+
+    .custom-navigation > a {
+      width: 50px;
+    }
+
+    .custom-navigation .flex-next {
+      text-align: right;
+    }
+  </style>
 </head>
 <body>
     {{>navegacion}}
     <div class="container p-4">
         {{{body}}}
     </div>
-    <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
-    <script>
-    var swiper = new Swiper('.swiper-container', {
-      effect: 'coverflow',
-      grabCursor: true,
-      centeredSlides: true,
-      slidesPerView: 'auto',
-      coverflowEffect: {
-        rotate: 50,
-        stretch: 0,
-        depth: 100,
-        modifier: 1,
-        slideShadows : true,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-      },
-    });
-    </script>
+    
+  <!-- jQuery -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
+  <!-- FlexSlider http://flexslider.woothemes.com/index.html -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/jquery.flexslider-min.js"></script>
+
+  <script type="text/javascript">
+    $(window).load(function(){
+      $('.flexslider').flexslider({
+        animation: "slide",
+        animationLoop: true,
+        controlsContainer: $(".custom-controls-container"),
+        customDirectionNav: $(".custom-navigation a"),
+
+      });
+    });
+  </script>
 </body>
 </html>
 

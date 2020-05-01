@@ -1,6 +1,6 @@
 const   mongoose = require('mongoose');
 
-mongoose.connect(process.env.URI, {
+mongoose.connect(process.env.DEV_DB, {
     useNewUrlParser:true,
     useUnifiedTopology: true,
     useCreateIndex:true,
@@ -9,6 +9,6 @@ mongoose.connect(process.env.URI, {
 
 const connection = mongoose.connection;
 connection.once('open', () =>{
-    console.log(`La base de dato ${process.env.URI} esta conectada`)
+    console.log(`La base de dato ${process.env.DEV_DB} esta conectada`)
 })
 
